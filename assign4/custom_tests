@@ -1,0 +1,37 @@
+# File: custom_tests
+# ------------------
+# This file contains a list of custom tests to be run by the sanity check tool.
+# Refer to the CS107 website for more information.
+#
+# Below are example custom tests, you can edit this file to change or add new tests.
+
+myls -a /afs/ir/class/cs107/samples
+# test -a
+myls -a /usr/class/cs107
+# test -z
+myls -z /usr/class/cs107
+# non flag
+myls /usr/class/cs107
+# check empty argument
+myls
+# check same element added
+test_binsert -i 5 4 4 3 2
+# check string
+test_binsert -s haaal heel bcd xxx
+# test long input
+test_binsert -i 1 2 3 4 5 6 7 123 41 4 513 5123 1234 141
+# check empty
+test_binsert -s
+test_binsert -i
+# check -u
+mysort -u samples/names
+# check multiple arguments
+mysort -l -u samples/names
+# check non arguments
+mysort samples/names
+# check -r
+mysort -r sample/names
+# check -n
+mysort -n samples/names
+
+

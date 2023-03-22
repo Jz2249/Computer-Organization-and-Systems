@@ -1,0 +1,32 @@
+# File: custom_tests
+# ------------------
+# This file contains a list of custom tests to be run by the sanity check tool.
+# Refer to the page on working on assignments, linked to from the Assignments page,
+# for more information.
+#
+# Below are example custom tests, you can edit this file to change or add new tests.
+
+mycat samples/names
+sort samples/names | $mytail
+
+# test Makefile
+mycat Makefile
+# test newline at the end
+mycat samples/colors
+# test no newline at the end
+mycat samples/colors_no_end_newline
+# test if array has less than n elements
+mytail -100 samples/colors
+# test if the file order is different
+sort samples/colors | $mytail
+# test if we have lines more than n
+mytail -5 Makefile
+mytail -20 samples/dictionary
+# test number of elements less than estimate
+myuniq samples/colors
+# test number of elements larger than estimate
+myuniq samples/names
+# test order changed
+sort samples/names | $myuniq
+
+

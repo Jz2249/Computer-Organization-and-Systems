@@ -1,0 +1,43 @@
+# File: custom_tests
+# ------------------
+# This file contains a list of custom tests to be run by the sanity check tool.
+# Refer to cs107.stanford.edu/working-on-assignments.html for more information.
+#
+# Below are example custom tests, you can edit this file to change or add new tests.
+
+sat 16 -32768 -32768
+automata 90
+utf8 0x20AC
+# check two argv command
+automata 2 2  
+# check 0's           
+automata 1  1 0    
+automata 10 0 20  
+automata 0  11 11     
+# check large number
+automata 0xff 0xffffffffffffffff     
+automata 0 0x8000000000000000 
+# check different ruleset pattern
+automata 20 33
+automata 73 33
+automata 33 33
+     
+# check bound
+utf8 0x0000  0x007f     
+utf8 0x0080  0x07ff    
+utf8 0x0800  0xffff    
+# check through different normal path
+utf8 0x33 0xf8 0x4b7 0x6666
+# overflow for 4 bit (positive) 
+sat 4 3 5  
+# normal case within range           
+sat 4 -3 6   
+# overflow for 4 bit (negtaive)
+sat 4 3 2              
+# overflow for 16 bit (positive)
+sat 16 32767 1              
+# normal case within range
+sat 16 -33 6           
+# extrme case overflow 
+sat 64 9223372036854775807 1 
+sat 64 -9223372036854775808 -1  

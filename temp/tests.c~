@@ -1,0 +1,10 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+  char a[4];
+  strcpy(a,"a");
+  printf("%zu",strlen(a));
+  
+}

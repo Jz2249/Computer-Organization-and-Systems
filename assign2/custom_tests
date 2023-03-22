@@ -1,0 +1,48 @@
+# File: custom_tests
+# ------------------
+# This file contains a list of custom tests to be run by the sanity check tool.
+# Refer to the "how to work on assignments" page on the course website for more information.
+#
+# Below are example custom tests, you can edit this file to change or add new tests.
+# IMPORTANT: comments start with # and must be on their own line
+# To use env in custom tests, the name of the program must start with $
+# (see the example test below)
+
+myprintenv HOME
+env NAME=VAR $myprintenv NAME
+tokenize ", " "red, green, blue,orange, yellow"
+mywhich
+
+# check if key is not in array
+myprintenv HHHHJK
+# check normal case
+myprintenv HOME
+# check temporary changed case
+env HOME=newhome $myprintenv HOME
+# check similar but non-identical key
+myprintenv HOMEE
+myprintenv MP
+# test '_' variable
+env _=temp $myprintenv _ 
+
+# check there is nothing before delimiter
+tokenize "-" "-red-blue-green"
+# check there is nothing after delimiter
+tokenize "-" "red-blue-"
+# check there is nothing besides delimiter
+tokenize "-" "-"
+# check multi delimiter
+tokenize " -," "it's CS-107, a hard-core course"
+# check optional buffer size
+tokenize "-" "it's CS-107, a hard-core course" 5
+mywhich python
+# check multiple excutable file in command line
+mywhich python emacs cc python
+# check if file not exist
+mywhich python ccsshwjwq
+# check using temporary path contents
+env MYPATH=/tmp:tools $mywhich submit user
+env MYPATH=/tmp:tools $mywhich custom_tests non-existfile
+env MYPATH= $mywhich custom_tests non-existfile
+env MYPATH=~/cs107/assign2 $mywhich util.c
+
